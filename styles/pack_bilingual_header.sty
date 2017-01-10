@@ -1,0 +1,121 @@
+%
+% define an institute
+\protected\gdef\blInstitute#1{%
+\institute{%
+\makebox[0pt][c]{%
+\begin{tabular}{r|l}%
+#1%
+\end{tabular}}%
+}%%
+}%
+%
+% a bilingual item of the institute description
+% #1 description in english
+% #2 description in another language
+\protected\gdef\@blItem#1#2{%
+\smashTwoWithSeparator{#1}{&}{\zhb{#2}}%
+}%
+%
+\protected\gdef\blUni#1#2{%
+\@blItem{#1}{#2}%
+\protected\gdef\@blUni{#1}%
+}%
+%
+\protected\gdef\blFaculty#1#2{%
+\@blItem{#1}{#2}%
+\protected\gdef\@blFaculty{#1}%
+}%
+%
+\protected\gdef\blGroup#1#2{%
+\@blItem{#1}{#2}%
+\protected\gdef\@blGroup{#1}%
+}%
+%
+\protected\gdef\blAddressA#1#2#3{%
+\@blItem{#1 #2}{#3 #1}%
+\protected\gdef\@blAddressA{#2}%
+}%
+%
+\protected\gdef\blAddressB#1#2{%
+\@blItem{#1}{#2}%
+}%
+%
+\protected\gdef\smashTwoWithSeparator#1#2#3{%
+\makebox[0pt][r]{#1}#2\makebox[0pt][l]{#3}%
+}%
+%
+% #1 author name
+% #2 author in other language
+% #3 email address
+% #4 web page
+\protected\gdef\blAuthor#1#2#3#4{%
+%
+\protected\def\@authorPlain{#1}%
+%
+\author[\@authorPlain]{%
+%
+\if\relax\detokenize{#2}\relax%
+\expandafter\@firstoftwo%
+\else%
+\expandafter\@secondoftwo%
+\fi%
+{% no other language/chinese author name
+\@authorPlain%
+}{% has chinese author name
+\smashTwoWithSeparator{#1}{~\ensuremath{\cdot}~}{\zhb{#2}}%
+}%
+%
+\if\relax\detokenize{#3}\relax%
+\expandafter\@firstoftwo%
+\else%
+\expandafter\@secondoftwo%
+\fi%
+{% no email
+\if\relax\detokenize{#4}\relax%
+\expandafter\@firstoftwo%
+\else%
+\expandafter\@secondoftwo%
+\fi%
+{% no email, no website: do nothing
+}{% no email, but website
+\smallskip\\\footnotesize{\href{#4}{#4}}%
+}}{% has email
+\if\relax\detokenize{#4}\relax%
+\expandafter\@firstoftwo%
+\else%
+\expandafter\@secondoftwo%
+\fi%
+{% has email, no website
+\smallskip\\\footnotesize{\href{mailto:#3}{#3}}%
+}{% has email, has website
+\smallskip\\\footnotesize{\smashTwoWithSeparator{\href{mailto:#3}{#3}}{~\ensuremath{\cdot}~}{\href{#4}{#4}}}%
+}}%
+}%
+%
+\protected\gdef\@authorRaw{%
+\@authorPlain%
+\if\relax\detokenize{#2}\relax%
+\expandafter\@firstoftwo%
+\else%
+\expandafter\@secondoftwo%
+\fi%
+{}{~\mbox{[\zhb{#2}]}}%
+%
+\if\relax\detokenize{#3}\relax%
+\expandafter\@firstoftwo%
+\else%
+\expandafter\@secondoftwo%
+\fi%
+{}{\\\href{mailto:#3}{#3}}%
+%
+\if\relax\detokenize{#4}\relax%
+\expandafter\@firstoftwo%
+\else%
+\expandafter\@secondoftwo%
+\fi%
+{}{\\\href{mailto:#4}{#4}}%
+%
+}%
+%
+%
+}%

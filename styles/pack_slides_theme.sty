@@ -1,0 +1,104 @@
+%%%
+%%% Basic color definitions
+%%%
+\usecolortheme{orchid}%
+\useinnertheme{rectangles}%
+\useoutertheme{infolines}%
+%
+\definecolor{headlineBackground}{cmyk}{0.08,0.37,0.49,0}%
+\definecolor{logoRed}{cmyk}{0.3,1,1,0}%
+\definecolor{logoOrange}{cmyk}{0,0.65,1,0}%
+\definecolor{listingcommentgray}{gray}{0.6}%
+%
+\colorlet{headlineForeground}{logoRed}%
+\colorlet{itemBackground}{logoRed!90!black}%
+\colorlet{itemForeground}{logoOrange!90!white}%
+\colorlet{alert}{logoRed}%
+\colorlet{footlineForeground}{headlineForeground}%
+\colorlet{citationColor}{footlineForeground}%
+\colorlet{blockTitleBackground}{logoRed}%
+\colorlet{blockTitleForeground}{logoOrange}%
+\colorlet{blockBackground}{headlineBackground}%
+%
+\setbeamercolor{section in toc}{fg=footlineForeground}%
+\setbeamercolor{subsection in toc}{fg=footlineForeground}%
+%
+\setbeamercolor*{palette primary}{use=structure,fg=white,bg=structure.fg}%
+\setbeamercolor*{palette secondary}{use=structure,fg=white,bg=structure.fg!75!black}%
+\setbeamercolor*{palette tertiary}{use=structure,fg=white,bg=structure.fg!50!black}%
+\setbeamercolor*{palette quaternary}{fg=white,bg=black}%
+%
+\setbeamercolor*{title}{parent=palette primary,fg=headlineBackground}%
+%
+\setbeamercolor*{block title}{use=structure,fg=blockTitleForeground,bg=blockTitleBackground}%
+\setbeamercolor*{block title alerted}{parent=block title}%
+\setbeamercolor*{block body}{parent=palette primary,fg=black,bg=blockBackground}%
+\setbeamercolor*{block body alerted}{parent=block body}%
+\setbeamercolor*{alerted text}{parent=palette primary, fg=alert}%
+%
+\setbeamercolor*{frametitle}{fg=headlineForeground}%
+\setbeamercolor*{framesubtitle}{fg=footlineForeground}%
+%
+%%%
+%%% Templates for different slide elements
+%%%
+\setbeamertemplate{bibliography item}[book]%
+%
+\setbeamertemplate{items}[circle]%
+\setbeamertemplate{item}[circle]%
+\setbeamercolor*{item}{fg=itemBackground}
+\setbeamercolor*{items}{fg=itemBackground}
+\setbeamercolor*{subitem}{fg=itemBackground}
+\setbeamercolor*{subitems}{fg=itemBackground}
+\setbeamercolor{enumerate items}{fg=itemBackground}
+\setbeamercolor{itemize item}{fg=itemBackground}
+%
+\setbeamercolor{subitem projected}{fg=itemForeground}%
+\setbeamercolor{item projected}{fg=itemForeground}%
+\setbeamercolor{items projected}{fg=itemForeground}%
+%
+\setbeamertemplate{sections/subsections in toc}[circle]%
+\setbeamerfont{section number projected}{family=\sffamily,series=\bfseries,size=\normalsize}%
+%
+\setbeamertemplate{title page}[default][colsep=-4bp,rounded=false,shadow=true]
+\setbeamertemplate{part page}[default][colsep=-4bp,rounded=false,shadow=true]
+%
+\defbeamertemplate*{headline}{BLANK}{}%
+%
+\setbeamersize{text margin left=1em,text margin right=1em}%
+%
+%%%
+%%% Some internal commands to get headlines nicely vertically aligned.
+%%%
+\newlength{\@blabtmpFTL}%
+\newsavebox{\@blabtmpFTLbox}%
+\defbeamertemplate*{frametitle}{IOAO}{%
+\vspace*{3pt}%
+\savebox{\@blabtmpFTLbox}{\mbox{{\usebeamerfont{frametitle}{\insertframetitle}}}}%
+\usebeamerfont{frametitle}{%
+\setlength{\@blabtmpFTL}{\ht\@blabtmpFTLbox}%
+\addtolength{\@blabtmpFTL}{\dp\@blabtmpFTLbox}%
+\addtolength{\@blabtmpFTL}{-20pt}%
+\setlength{\@blabtmpFTL}{0.5\@blabtmpFTL}%
+\vspace*{-\@blabtmpFTL}%
+\usebox\@blabtmpFTLbox%
+}%
+}%
+%
+%%
+%% Font definitions for titles and that alike.
+%%
+%
+\setbeamerfont{title}{parent=titlelike,size*={16}{0},series=\bfseries}%
+\setbeamerfont{frametitle}{parent=titlelike,size*={12}{0},series=\bfseries}%
+%
+%%%
+%%% Auxilliary definitions.
+%%%
+\defbeamertemplate*{navigation symbols}{IOAO}{}%
+%
+\setbeamerfont{block title example}{parent={block title},size=\footnotesize}%
+\setbeamerfont{block body example}{parent={block body},size=\footnotesize}%
+\setbeamerfont{example text}{parent={normal text},size=\footnotesize}%
+%
+\setbeamertemplate{blocks}[rounded][shadow=true]%
