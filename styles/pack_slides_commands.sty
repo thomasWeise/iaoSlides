@@ -7,16 +7,16 @@
 %%%
 %%% The definition for the title page.
 %%%
-\defbeamertemplate*{title page}{UBRI}[1][]{%
+\defbeamertemplate*{title page}{IAO}[1][]{%
 \vbox{}%
 \strut\vfill\strut%
-\begin{centering}%
+\centering%
 \vfill\vfill\vfill\vfill%
 {\usebeamercolor[fg]{title}\usebeamerfont{title}\inserttitle}%
-\vfill%
 \begingroup{\ifx\insertsubtitle\empty%
-\else%
-\usebeamercolor[fg]{title}\usebeamerfont{title}\large{\insertsubtitle}
+\vfill%
+\else\par%
+\usebeamercolor[fg]{title}\usebeamerfont{title}\large{\insertsubtitle}%
 \vfill%
 \fi}\endgroup%
 \begin{beamercolorbox}[center,#1]{author}%
@@ -28,7 +28,6 @@
 \begin{beamercolorbox}[center,#1]{date}%
 \usebeamercolor[fg]{title}\usebeamerfont{date}\insertdate%
 \end{beamercolorbox}%
-\end{centering}
 \vfill\vfill\vfill\vfill\vfill%
 }%
 %
