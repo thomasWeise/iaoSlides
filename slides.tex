@@ -184,6 +184,53 @@ Commands for references to literature (stored as Bib\TeX\ records in the file \t
 \end{block}%
 \end{frame}%
 %
+\begin{frame}[containsverbatim]%
+\frametitle{Coding}%
+\begin{itemize}%
+\item We can include inline source code with the command \texttt{{\textbackslash}codeil\{(x==y)?(a-b):(a*b)\}} rendering as \codeil{(x==y)?(a-b):(a*b)}%
+\item We can also include nice blocks of listings, see below\dots%
+\end{itemize}%
+\begin{center}%%
+\begin{listingBlock}[0.8]{This is the listing caption.}%
+\begin{lstlisting}
+This is a listing%
+\end{lstlisting}%
+\end{listingBlock}%
+\end{center}%
+\end{frame}%
+%
+%
+\begin{frame}[containsverbatim]%
+\frametitle{Code Block with imported Code\dots}%
+\begin{center}%%
+\begin{listingBlock}[0.9]{This is the listing caption.}%
+\begin{lstlisting}
+\begin{listingBlock}[0.8]{This is the listing caption.}%
+\begin{scaledBox}{0.8\paperwidth}{!}%
+\parbox{1.5\paperwidth}{%
+\lstinputlisting[mathescape=false]{./styles/pack_units.sty}%
+}%
+\end{scaledBox}%
+\end{listingBlock}%
+\end{lstlisting}%
+\end{listingBlock}%
+\end{center}%
+\end{frame}%
+%
+\begin{frame}[containsverbatim]%
+\frametitle{{\dots}renders as}%
+\begin{center}%%
+\begin{listingBlock}[0.8]{This is the listing caption.}%
+\begin{scaledBox}{0.8\paperwidth}{!}%
+\parbox{1.5\paperwidth}{%
+\lstinputlisting[mathescape=false]{./styles/pack_units.sty}%
+}%
+\end{scaledBox}%
+\end{listingBlock}%
+\end{center}%
+\end{frame}%
+%
+%
 \endPresentation%
 %
 \end{document}%%
