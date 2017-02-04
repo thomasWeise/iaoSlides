@@ -87,9 +87,13 @@ upquote=true%
 % #2 the code to be printed inline
 \newcommand{\codeil}[2][]{%
 \if\relax\detokenize{#1}\relax%
-\fcolorbox{inlineCodeFrame}{inlineCodeBg}{\lstinline[keywordstyle=\listingBasicStyle]$#2$}%
+\mbox{\fcolorbox{inlineCodeFrame}{inlineCodeBg}{\mbox{\lstinline[keywordstyle=\listingBasicStyle]$#2$}}}%
 \else%
-\fcolorbox{inlineCodeFrame}{inlineCodeBg}{\lstinline[basicstyle=\listingBasicStyle,keywordstyle={[1]\listingKeywordStyleA},keywordstyle={[2]\listingKeywordStyleB},keywordstyle={[3]\listingKeywordStyleC},keywordstyle=\listingKeywordStyleA,#1]$#2$}%
+\mbox{\fcolorbox{inlineCodeFrame}{inlineCodeBg}{\mbox{\lstinline[basicstyle=\listingBasicStyle,keywordstyle={[1]\listingKeywordStyleA},keywordstyle={[2]\listingKeywordStyleB},keywordstyle={[3]\listingKeywordStyleC},keywordstyle=\listingKeywordStyleA,#1]$#2$}}}%
 \fi%
 }%
+%
+% print Java-formatted inline code
+% #1 the code to print
+\newcommand{\jcodeil}[1]{\codeil[language=Java]{#1}}%
 %
