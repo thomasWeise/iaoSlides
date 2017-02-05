@@ -192,8 +192,20 @@ Commands for references to literature (stored as Bib\TeX\ records in the file \t
 \end{itemize}%
 \begin{center}%%
 \begin{listingBlock}[0.8]{This is the listing caption.}%
+\begin{lstlisting}[language=Java]
+byte b = 5; short d = 7 | 5 >> 4;
+int a = b + c //`a \longleftarrow b+c`
+\end{lstlisting}%
+\end{listingBlock}\\%
+\def\xtextacute{\texttt{\` }}%
+\begin{listingBlock}[0.8]{This is the source code creating the above listing.}%
 \begin{lstlisting}
-This is a listing%
+\begin{listingBlock}[0.8]{This is the listing caption.}%
+\begin{(*@\texttt{l}@*)stlisting}[language=Java]
+byte b = 5; short d = 7 | 5 >> 4;
+a = b + c //(*@\xtextacute@*)a \longleftarrow b+c(*@\xtextacute@*)
+\end{(*@\texttt{l}@*)stlisting}%
+\end{listingBlock}%
 \end{lstlisting}%
 \end{listingBlock}%
 \end{center}%
@@ -208,7 +220,7 @@ This is a listing%
 \begin{listingBlock}[0.8]{This is the listing caption.}%
 \begin{scaledBox}{0.8\paperwidth}{!}%
 \parbox{1.5\paperwidth}{%
-\lstinputlisting[mathescape=false]{./styles/pack_units.sty}%
+\lstinputlisting{./styles/pack_units.sty}%
 }%
 \end{scaledBox}%
 \end{listingBlock}%
@@ -223,7 +235,7 @@ This is a listing%
 \begin{listingBlock}[0.8]{This is the listing caption.}%
 \begin{scaledBox}{0.8\paperwidth}{!}%
 \parbox{1.5\paperwidth}{%
-\lstinputlisting[mathescape=false]{./styles/pack_units.sty}%
+\lstinputlisting{./styles/pack_units.sty}%
 }%
 \end{scaledBox}%
 \end{listingBlock}%

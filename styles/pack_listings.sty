@@ -51,7 +51,7 @@ keywordstyle=[2]\listingKeywordStyleB,%
 keywordstyle=[3]\listingKeywordStyleC,%
 identifierstyle=\listingIdentifierStyle,%
 stringstyle=\listingStringStyle,%
-mathescape=true,%
+mathescape=false,%
 breaklines=true,%
 breakatwhitespace=true,%
 captionpos=b,%
@@ -62,6 +62,9 @@ showstringspaces=true,%
 showlines=false,%
 upquote=true%
 }%
+%
+% introduce `...` as alternative math escape
+\lst@AddToHook{SelectCharTable}{\lst@Escape{\`}{\`}{\listingCommentFormat\setbox\@tempboxa=\hbox\bgroup$}{$\egroup \lst@CalcLostSpaceAndOutput}}%
 %
 %
 %%% 
