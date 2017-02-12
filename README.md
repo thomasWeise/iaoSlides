@@ -1,6 +1,12 @@
 # Institute of Applied Optimization-themed LaTeX Slides
 
-Here I store my [LaTeX](https://en.wikipedia.org/wiki/LaTeX) template for [Institute of Applied Optimization](http://iao.hfuu.edu.cn)-themed [beamer](https://en.wikipedia.org/wiki/Beamer_%28LaTeX%29) slides. It is only a first draft and will be improved. Probably.
+[Current PDF](https://circleci.com/api/v1/project/thomasWeise/iaoSlides/latest/artifacts/0/$CIRCLE_ARTIFACTS/slides.pdf?branch=master)
+[<img alt="CircleCI Build Status" src="https://img.shields.io/circleci/project/thomasWeise/iaoSlides.svg" height="20"/>](https://circleci.com/gh/thomasWeise/iaoSlides)
+[<img alt="Wercker Build Status" src="https://img.shields.io/wercker/ci/58a0cddf9a99bd01007654ca.svg" height="20"/>](https://app.wercker.com/#applications/58a0cddf9a99bd01007654ca)
+
+Here we provide a [LaTeX](https://en.wikipedia.org/wiki/LaTeX) [beamer](https://en.wikipedia.org/wiki/Beamer_%28LaTeX%29) template for slides of presentations by members of the [Institute of Applied Optimization](http://iao.hfuu.edu.cn) (IAO) of the Faculty of Computer Science and Technology (计算机科学与技术系) of the Hefei University (合肥学院). [Here](https://circleci.com/api/v1/project/thomasWeise/iaoSlides/latest/artifacts/0/$CIRCLE_ARTIFACTS/slides.pdf?branch=master) you can see how these slides look compiled to [PDF](https://circleci.com/api/v1/project/thomasWeise/iaoSlides/latest/artifacts/0/$CIRCLE_ARTIFACTS/slides.pdf?branch=master).
+
+If you do not have a LaTeX installation but a [Docker](http://www.docker.com/) installation, you might want to check out the docker image [thomasWeise/texlive](https://hub.docker.com/r/thomasweise/texlive/) providing a complete installation of [TeX Live](https://tug.org/texlive/) along with all necessary tools (and the scripts listed under "Usage" below).
 
 ## 1. Usage
 
@@ -11,6 +17,7 @@ Here I store my [LaTeX](https://en.wikipedia.org/wiki/LaTeX) template for [Insti
   2. `./scripts/pdflatex.sh slides evince` if you are using `pdf` figures
   3. `./scripts/xelatex.sh slides evince` if you have Chinese text (also: produces smaller output than `pdflatex`)
   4. `./scripts/lualatex.sh slides evince` if the above commands fail (LuaLaTeX is slightly better in dealing with memory allocation and stuff)
+  5. `mintex.sh slides <compiler1> <compiler2> ...` allows you to invoke an arbitrary selection of the above compiler scripts to produce the smallest `pdf`. Doing `mintex.sh mydoc latex lualatex xelatex`, for instance, will compile `mydoc.tex` with `latex.sh`, `lualatex.sh`, and `xelatex.sh` and keep the smallest resulting `pdf` file.
 
 ## 2. Available Commands
 

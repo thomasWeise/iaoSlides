@@ -25,13 +25,23 @@
 \begin{beamercolorbox}[center,#1]{institute}%
 \usebeamercolor[fg]{title}\usebeamerfont{institute}\insertinstitute%
 \end{beamercolorbox}\vfill%
+%
+%% insert date only if actually set
+\ifx\relax\insertdate\relax%
+\expandafter\@firstoftwo%
+\else%
+\expandafter\@secondoftwo%
+\fi%
+{}{%
 \begin{beamercolorbox}[center,#1]{date}%
 \usebeamercolor[fg]{title}\usebeamerfont{date}\insertdate%
 \end{beamercolorbox}%
+}%
 \vfill\vfill\vfill\vfill\vfill%
 }%
 %
 %
+\global\let\insertdate\relax%
 %
 %
 %
@@ -59,7 +69,18 @@
 \defbeamertemplate*{footline}{IOAO}{%
 {\color{footlineForeground}%
 \strut\hfill%
-{\insertshorttitle}, {\insertshortdate{}}%
+{\insertshorttitle}%
+%%
+%% insert date only if actually set
+\ifx\relax\insertdate\relax%
+\expandafter\@firstoftwo%
+\else%
+\expandafter\@secondoftwo%
+\fi%
+{}{, {\insertshortdate{}}%
+%
+}%
+%
 \hfill\hfill%
 {\insertshortauthor}%
 \hfill\hfill%
