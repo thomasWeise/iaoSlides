@@ -17,11 +17,8 @@ build:
             name: XeLaTeX Build (default script from container)
             code: xelatex.sh slides
         - script:
-            name: LuaLaTeX Build (default script from container)
-            code: lualatex.sh slides
-        - script:
             name: MinTeX Build (default script from container)
-            code: mintex.sh slides latex pdflatex lualatex xelatex
+            code: mintex.sh slides latex pdflatex xelatex
         - script:
             name: LaTeX Build (script provided in project)
             code: ./scripts/latex.sh slides
@@ -32,8 +29,5 @@ build:
             name: XeLaTeX Build (script provided in project)
             code: ./scripts/xelatex.sh slides
         - script:
-            name: LuaLaTeX Build (script provided in project)
-            code: ./scripts/lualatex.sh slides
-        - script:
             name: MinTex Build (script provided in project)
-            code: ./scripts/mintex.sh slides latex pdflatex lualatex xelatex
+            code: ./scripts/mintex.sh slides latex pdflatex xelatex

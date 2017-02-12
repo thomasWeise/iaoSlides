@@ -19,5 +19,5 @@ dependencies:
 # terminated unexpectedly.
 test:
   override:
-    - ./scripts/mintex.sh slides latex xelatex pdflatex lualatex
+    - ./scripts/mintex.sh slides latex pdflatex
     - cp "slides.pdf" "$CIRCLE_ARTIFACTS"

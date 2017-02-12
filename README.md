@@ -1,4 +1,4 @@
-# Institute of Applied Optimization-themed LaTeX Slides
+# LaTeX Beamer Slides Theme for the [Institute of Applied Optimization](http://iao.hfuu.edu.cn) (IAO)
 
 [Current PDF](https://circleci.com/api/v1/project/thomasWeise/iaoSlides/latest/artifacts/0/$CIRCLE_ARTIFACTS/slides.pdf?branch=master)
 [<img alt="CircleCI Build Status" src="https://img.shields.io/circleci/project/thomasWeise/iaoSlides.svg" height="20"/>](https://circleci.com/gh/thomasWeise/iaoSlides)
@@ -16,7 +16,7 @@ If you do not have a LaTeX installation but a [Docker](http://www.docker.com/) i
   1. `./scripts/latex.sh slides evince` if you are using `eps` figures
   2. `./scripts/pdflatex.sh slides evince` if you are using `pdf` figures
   3. `./scripts/xelatex.sh slides evince` if you have Chinese text (also: produces smaller output than `pdflatex`)
-  4. `./scripts/lualatex.sh slides evince` if the above commands fail (LuaLaTeX is slightly better in dealing with memory allocation and stuff)
+  4. `./scripts/lualatex.sh slides evince` if the above commands fail (LuaLaTeX is slightly better in dealing with memory allocation and stuff); Warning: If your slides include code (`\codeil`, `lstlisting`), the `lualatex.sh` build process may not work.
   5. `mintex.sh slides <compiler1> <compiler2> ...` allows you to invoke an arbitrary selection of the above compiler scripts to produce the smallest `pdf`. Doing `mintex.sh mydoc latex lualatex xelatex`, for instance, will compile `mydoc.tex` with `latex.sh`, `lualatex.sh`, and `xelatex.sh` and keep the smallest resulting `pdf` file.
 
 ## 2. Available Commands
