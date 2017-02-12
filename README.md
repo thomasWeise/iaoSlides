@@ -1,7 +1,6 @@
 # LaTeX Beamer Slides Theme for the [Institute of Applied Optimization](http://iao.hfuu.edu.cn) (IAO)
 
-[Current PDF](https://circleci.com/api/v1/project/thomasWeise/iaoSlides/latest/artifacts/0/$CIRCLE_ARTIFACTS/slides.pdf?branch=master)
-[<img alt="CircleCI Build Status" src="https://img.shields.io/circleci/project/thomasWeise/iaoSlides.svg" height="20"/>](https://circleci.com/gh/thomasWeise/iaoSlides)
+[(Current PDF)](https://circleci.com/api/v1/project/thomasWeise/iaoSlides/latest/artifacts/0/$CIRCLE_ARTIFACTS/slides.pdf?branch=master)&nbsp;&bsnp;[<img alt="CircleCI Build Status" src="https://img.shields.io/circleci/project/thomasWeise/iaoSlides.svg" height="20"/>](https://circleci.com/gh/thomasWeise/iaoSlides)
 [<img alt="Wercker Build Status" src="https://img.shields.io/wercker/ci/58a0cddf9a99bd01007654ca.svg" height="20"/>](https://app.wercker.com/#applications/58a0cddf9a99bd01007654ca)
 
 Here we provide a [LaTeX](https://en.wikipedia.org/wiki/LaTeX) [beamer](https://en.wikipedia.org/wiki/Beamer_%28LaTeX%29) template for slides of presentations by members of the [Institute of Applied Optimization](http://iao.hfuu.edu.cn) (IAO) of the Faculty of Computer Science and Technology (计算机科学与技术系) of the Hefei University (合肥学院). [Here](https://circleci.com/api/v1/project/thomasWeise/iaoSlides/latest/artifacts/0/$CIRCLE_ARTIFACTS/slides.pdf?branch=master) you can see how these slides look compiled to [PDF](https://circleci.com/api/v1/project/thomasWeise/iaoSlides/latest/artifacts/0/$CIRCLE_ARTIFACTS/slides.pdf?branch=master).

@@ -199,7 +199,7 @@ int a = b + c //`a \longleftarrow b+c`
 \end{listingBlock}\\%
 \def\xtextacute{\texttt{\` }}%
 \begin{listingBlock}[0.8]{This is the source code creating the above listing.}%
-\begin{lstlisting}
+\begin{lstlisting}[language=TeX]
 \begin{listingBlock}[0.8]{This is the listing caption.}%
 \begin{(*@\texttt{l}@*)stlisting}[language=Java]
 byte b = 5; short d = 7 | 5 >> 4;
@@ -216,11 +216,11 @@ a = b + c //(*@\xtextacute@*)a \longleftarrow b+c(*@\xtextacute@*)
 \frametitle{Code Block with imported Code\dots}%
 \begin{center}%%
 \begin{listingBlock}[0.9]{This is the listing caption.}%
-\begin{lstlisting}
+\begin{lstlisting}[language=TeX]
 \begin{listingBlock}[0.8]{This is the listing caption.}%
 \begin{scaledBox}{0.8\paperwidth}{!}%
 \parbox{1.5\paperwidth}{%
-\lstinputlisting{./styles/pack_units.sty}%
+\lstinputlisting[language=TeX]{./styles/pack_units.sty}%
 }%
 \end{scaledBox}%
 \end{listingBlock}%
@@ -235,7 +235,7 @@ a = b + c //(*@\xtextacute@*)a \longleftarrow b+c(*@\xtextacute@*)
 \begin{listingBlock}[0.8]{This is the listing caption.}%
 \begin{scaledBox}{0.8\paperwidth}{!}%
 \parbox{1.5\paperwidth}{%
-\lstinputlisting{./styles/pack_units.sty}%
+\lstinputlisting[language=TeX]{./styles/pack_units.sty}%
 }%
 \end{scaledBox}%
 \end{listingBlock}%
