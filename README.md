@@ -47,10 +47,11 @@ Sometimes we want to locate stuff at specific positions on a slide. For this pur
 1. You can use all the normal commands from package [`listings`](http://ctan.org/pkg/listings).
 2. `\begin{listingBlock}[width]{caption}...\end{listingBlock}` place a block with the specified `caption` which is supposed to contain a listing. The `width` can be specified relative to the paper width, if omitted, we use `0.95\paperwidth` as block width.
 3. `\codeil[format]{text}` formats `text` as source code (with the optional `format`, which can be any format support by `listings`, such as `Java`, `XML`, `C`, ...)
-4. `\jcodeil{text}` is a shorthand for `\codeil[language=Java]{text}` 
-5. escaping to LaTeX can be one via `(*@YOUR-LATEX-CODE@*)`
-6. escaping to LaTeX math mode directly goes via <code>&#x60;YOUR-MATH-STUFF&#x60;</code>
-7. `\codeBox{text}` puts its contents into a box of the same color style as `\codeil` or `\jcodeil`
+4. escaping to LaTeX can be one via `(*@YOUR-LATEX-CODE@*)`
+5. escaping to LaTeX math mode directly goes via <code>&#x60;YOUR-MATH-STUFF&#x60;</code>
+6. `\codeBox{text}` puts its contents into a box of the same color style as `\codeil` or `\jcodeil`
+7. `\xcodeil{text}` is a shorthand for `\codeil[language=XML]{text}`
+9. `\bcodeil{text}` is a shorthand for `\codeil[language=bash]{text}`
 
 ### 2.4. Citations
 

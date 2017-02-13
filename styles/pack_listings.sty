@@ -21,6 +21,7 @@
 \IfFileExists{lstlang3.sty}{\RequirePackage{lstlang3}}{}%
 \IfFileExists{textcomp.sty}{\RequirePackage{textcomp}}{\gdef\textsuperscript#1{#1}}%
 %
+\lstset{defaultdialect=LaTeX[TeX]}%
 %
 %
 %%% We treat some unicode characters as literate programming keys,
@@ -91,14 +92,18 @@ upquote=true%
 % #1 the optional args
 % #2 the code to be printed inline
 \newcommand{\codeil}[2][]{%
+\texorpdfstring{%
 \if\relax\detokenize{#1}\relax%
 \codeBox{\lstinline[keywordstyle=\listingBasicStyle]$#2$}%
 \else%
 \codeBox{\lstinline[basicstyle=\listingBasicStyle,keywordstyle={[1]\listingKeywordStyleA},keywordstyle={[2]\listingKeywordStyleB},keywordstyle={[3]\listingKeywordStyleC},keywordstyle=\listingKeywordStyleA,#1]$#2$}%
 \fi%
+}{#2}%
 }%
 %
 % print Java-formatted inline code
 % #1 the code to print
-\newcommand{\jcodeil}[1]{\codeil[language=Java]{#1}}%
+\newcommand{\jcodeil}[1]{\texorpdfstring{\codeil[language=Java]{#1}}{#1}}%
+\newcommand{\bcodeil}[1]{\texorpdfstring{\codeil[language=bash]{#1}}{#1}}%
+\newcommand{\xcodeil}[1]{\texorpdfstring{\codeil[language=XML]{#1}}{#1}}%
 %
