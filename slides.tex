@@ -242,6 +242,17 @@ a = b + c //(*@\xtextacute@*)a \longleftarrow b+c(*@\xtextacute@*)
 \end{center}%
 \end{frame}%
 %
+\begin{frame}%
+\frametitle{Listings in Slides: Careful}%
+\begin{itemize}%
+\item Careful with listings in frames%
+\item<2-> Any frame containing a listing must specify \codeil{[containsverbatim]}, i.e., \codeBox{\texttt{{\textbackslash}begin\{frame\}[containsverbatim]\%}}%
+\item<3-> There then should not be a percent mark after the end of the frame, i.e., write \codeBox{\texttt{{\textbackslash}end\{frame\}}} instead of \codeBox{\texttt{{\textbackslash}end\{frame\}\%}}
+\item<4-> If and only if the frame uses overlays (e.g., \codeBox{\texttt{only}}, \codeBox{\texttt{uncover}}, or any \codeBox{\texttt{<>}} form of commands, it must also define \codeBox{\texttt{fragile}}, i.e.,  \codeBox{\texttt{{\textbackslash}begin\{frame\}[containsverbatim,fragile]\%}}%
+\item<5-> You can put \codeBox{\texttt{lstinputlisting}}s into \codeBox{\texttt{parboxes}} which you can resize via \codeBox{\texttt{scaledBox}} or \codeBox{\texttt{resizebox}}%
+\item<6-> Plain listings \codeBox{\texttt{lstlisting}} must go into \codeBox{\texttt{minipage}}s to be resized via \codeBox{\texttt{scaledBox}}% 
+\end{itemize}%
+\end{frame}%
 %
 \endPresentation%
 %
