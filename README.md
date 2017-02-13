@@ -50,6 +50,7 @@ Sometimes we want to locate stuff at specific positions on a slide. For this pur
 4. `\jcodeil{text}` is a shorthand for `\codeil[language=Java]{text}` 
 5. escaping to LaTeX can be one via `(*@YOUR-LATEX-CODE@*)`
 6. escaping to LaTeX math mode directly goes via <code>&#x60;YOUR-MATH-STUFF&#x60;</code>
+7. `\codeBox{text}` puts its contents into a box of the same color style as `\codeil` or `\jcodeil`
 
 ### 2.4. Citations
 
