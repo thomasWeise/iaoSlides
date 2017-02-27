@@ -3,6 +3,7 @@
 %%% Listings Commands
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
+%
 \gdef\listingBasicStyle{\ttfamily\footnotesize}%
 \gdef\listingNumberStyle{\tiny\rmfamily}%
 \gdef\listingKeywordStyleA{\color{violet}\textbf}%
@@ -14,6 +15,8 @@
 \gdef\listingOperatorStyle#1{{\listingKeywordStyleB{#1}}}%
 \gdef\listingStringStyle{\color{red}}%
 \xdef\listingIdentifierStyle{}%
+%
+%
 %
 \RequirePackage[formats]{listings}%
 \IfFileExists{lstlang1.sty}{\RequirePackage{lstlang1}}{}%
@@ -67,6 +70,9 @@ upquote=true%
 % introduce `...` as alternative math escape
 \lst@AddToHook{SelectCharTable}{\lst@Escape{\`}{\`}{\listingCommentFormat\setbox\@tempboxa=\hbox\bgroup$}{$\egroup \lst@CalcLostSpaceAndOutput}}%
 %
+%% are we in the caption of a listingBlock environment?
+\newif\ifInListingBlockCaption%
+\InListingBlockCaptionfalse%
 %
 %%% 
 %%% Put a listing as a block element
@@ -75,7 +81,7 @@ upquote=true%
 \newlength{\@blabtmplistingsboxwcap}%
 \newenvironment<>{listingBlock}[2][0.95]{%
 \begin{actionenv}%
-\def\insertblocktitle{Listing: #2}%
+\def\insertblocktitle{Listing: \InListingBlockCaptiontrue#2\InListingBlockCaptionfalse}%
 \@blabtmplistingsboxwcap=#1\paperwidth%
 \begin{minipage}{\@blabtmplistingsboxwcap}%
 \mode<presentation>{\setbeamercolor{local structure}{parent=example text}}%
@@ -86,7 +92,13 @@ upquote=true%
 \end{actionenv}%
 }%
 %
-\gdef\codeBox#1{\mbox{\fcolorbox{inlineCodeFrame}{inlineCodeBg}{\mbox{#1}}}}%
+%% Put the contents into a typical code box (no box is put if contents are in listing block caption)
+%% #1 the contents
+\gdef\codeBox#1{\mbox{%
+\ifInListingBlockCaption\expandafter\@secondoftwo\else\expandafter\@firstoftwo\fi%
+{\fcolorbox{inlineCodeFrame}{inlineCodeBg}{\mbox{#1}}}%
+{#1}%
+}}%
 %
 % print some code inline
 % #1 the optional args
