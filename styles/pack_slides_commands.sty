@@ -138,15 +138,11 @@
 }%
 }%
 %
-%%%
-%%% Call \endPresentation to mark the official end of the presentation.
-%%% It may or may not add a slide with references.
-%%% After this, you may still add appendix slides.
-%%%
-\gdef\endPresentation{%
-%
-\global\let\@framePatch\@framePatch@doNothing%
-%
+
+%%% The internal command for making an end-presentation slide
+%%% #1 the name in the table of contents
+%%% #2 the link
+\gdef\@@@endSlide#1#2{%
 \usebackgroundtemplate{%
 \hspace{-0.005\paperwidth}%
 \vspace{-0.005\paperheight}%
@@ -154,7 +150,7 @@
 ./graphics/iao/iao_slides_final/iao_slides_final}}%
 %
 \begin{frame}%
-\pdfbookmark[1]{Presentation End}{presentationEnd}%
+\pdfbookmark[1]{#1}{#2}%
 \strut\par\bigskip\par\strut%%
 \parbox{0.434\paperwidth}{\flushright%
 \scalebox{2}{\textbf{\LARGE{\textcolor{headlineForeground}{\zhb{谢谢}}}}}\bigskip\par%
@@ -165,6 +161,19 @@
 \textcolor{headlineForeground}{\insertinstitute}%
 }}%
 \end{frame}%
+}%
+%
+%%%
+%%% Call \endPresentation to mark the official end of the presentation.
+%%% It may or may not add a slide with references.
+%%% After this, you may still add appendix slides.
+%%%
+%
+\gdef\endPresentation{%
+%
+\global\let\@framePatch\@framePatch@doNothing%
+%
+\@@@endSlide{Presentation End}{presentationEnd}%
 %
 \ifnum\@bib@numcites>0\relax%
 \expandafter\@firstoftwo%
@@ -205,6 +214,10 @@
 %
 % define appendix command; print #1 on appendix slide
 \gdef\appendices#1{%
+\usebackgroundtemplate{%
+\hspace{-0.005\paperwidth}%
+\vspace{-0.005\paperheight}%
+\pgfuseimage{iao_slides_background}}%
 \pdfbookmark[1]{Appendices}{appendices}%
 \section*{Appendices}%
 \begin{frame}%
@@ -221,7 +234,10 @@
 \expandafter\pdfbookmark\expandafter[\expandafter2\expandafter]\expandafter{##1}{appendix\the\@appendix@hrefids}%
 \subsection{##1}%
 }%
+%
+\AtEndDocument{\@@@endSlide{Real Presentation End}{realPresentationEnd}}%
 }%
+%
 %
 %
 %

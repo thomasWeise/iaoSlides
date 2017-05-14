@@ -256,6 +256,37 @@ a = b + c //(*@\xtextacute@*)a \longleftarrow b+c(*@\xtextacute@*)
 %
 \endPresentation%
 %
+\appendices{}%
+%
+\appendix{How to End Presentations}%
+%
+\begin{frame}[containsverbatim]%
+\frametitle{How to End Presentations (1)}%
+\begin{center}%%
+\begin{listingBlock}[0.8]{How to End Presentations Without Appendix}%
+\begin{lstlisting}[language=TeX]
+\endPresentation%
+\end{lstlisting}%
+\end{listingBlock}%
+\end{center}%
+\end{frame}%
+\begin{frame}[containsverbatim]%
+\frametitle{How to End Presentations (2)}%
+\begin{center}%%
+\begin{listingBlock}[0.8]{How to End Presentations With Appendix}%
+\begin{lstlisting}[language=TeX]
+\endPresentation%
+\appendices{}%
+\appendix{How to End Presentations}%
+\begin{frame}%
+\frametitle{How to End Presentations (1)}%
+...
+\end{frame}%
+\end{lstlisting}%
+\end{listingBlock}%
+\end{center}%
+\end{frame}%
+%
 \end{document}%%
 \endinput%
 %
