@@ -44,6 +44,39 @@
 \global\let\insertdate\relax%
 %
 %
+%% put a qr code and a title
+%% #1 when
+%% #2 graphic
+%% #3 title
+%% #4 x
+%% #5 y
+\gdef\putQrCodeWithTitle#1#2#3#4#5{%
+\locate{#1}{\includegraphics[width=0.26\paperwidth]{#2}~\rotatebox{90}{\Large{~\textcolor{logoRed}{#3}}}}{#4}{#5}%
+}%
+%
+\xdef\qrCodeOneImage{graphics/qr_codes/qr_code_website}%
+\xdef\qrCodeOneTitle{website}%
+\global\let\qrCodeTwoImage\relax%
+\global\let\qrCodeTwoTitle\relax%
+%
+%% print the qr codes
+\gdef\printQrCodes{%
+%
+\if\relax\detokenize{\qrCodeOneImage}\relax\expandafter\@firstoftwo\else\expandafter\@secondoftwo\fi{}{%
+\ifx\qrCodeOneImage\relax\expandafter\@firstoftwo\else\expandafter\@secondoftwo\fi{}{%
+%
+\if\relax\detokenize{\qrCodeTwoImage}\relax\expandafter\@firstoftwo\else\expandafter\@secondoftwo\fi{%
+\putQrCodeWithTitle{}{\qrCodeOneImage}{\qrCodeOneTitle}{0.635}{0.56}%
+}{%
+\ifx\qrCodeTwoImage\relax\expandafter\@firstoftwo\else\expandafter\@secondoftwo\fi{%
+\putQrCodeWithTitle{}{\qrCodeOneImage}{\qrCodeOneTitle}{0.635}{0.56}%
+}{%
+\putQrCodeWithTitle{}{\qrCodeOneImage}{\qrCodeOneTitle}{0.635}{0.16}%
+\putQrCodeWithTitle{}{\qrCodeTwoImage}{\qrCodeTwoTitle}{0.635}{0.56}%
+}}%
+}}%
+%
+}%
 %
 %%%
 %%% Call \startPresentation at the beginning of the presentation to make
@@ -101,6 +134,9 @@
 \frametitle{Outline}%
 \tableofcontents[subsectionstyle=hide/hide/hide]%
 #1%
+%
+\printQrCodes%
+%
 \end{frame}%
 %
 %

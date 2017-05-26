@@ -65,3 +65,13 @@ Sometimes we want to locate stuff at specific positions on a slide. For this pur
 ### 2.5. Chinese
 
 Include Chinese text with the command `\zh{chinese text}`. You then need to use the XeLaTeX script for compiling. `\zhb{chinese text}` puts the text into an `\mbox{...}`, which prevents line breaks. This makes sense when using Chinese words like university names or other things that should not be broken across lines in an otherwise English text, for instance.
+
+### 2.6. Putting QR Codes
+QR codes make it easy from your audience to reach your website or slide set.
+You can put up to two QR Codes to be displayed at the title slide, ideally the first one should encode the URL of your website and the second one the URL of the slide set (or, if you want, your WeChat account...).
+Therefore, you need to point the commands `\qrCodeXXXImage` to the graphic file and `\qrCodeXXXTitle` to the title, where `XXX` must be replaced with either `One` or `Two`. You can define the commands to `\relax` to not display the QR code. As a consequence, the commands are currently defined as
+
+    \xdef\qrCodeOneImage{graphics/qr_codes/qr_code_website}%
+    \xdef\qrCodeOneTitle{website}%
+    \global\let\qrCodeTwoImage\relax%
+    \global\let\qrCodeTwoTitle\relax%
