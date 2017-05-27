@@ -29,11 +29,11 @@
 \let\@citationColor\@origCitationColor%
 %
 %% cite a reference by number, e.g., [1]
-\gdef\cite#1{\textsuperscript{\textnormal{\scalebox{0.75}{\color{\@citationColor}{\@bib@oldcite{#1}}}}}\global\advance\@bib@numcites by 1}%
+\gdef\cite#1{\textsuperscript{\textnormal{\scalebox{0.75}{\color{\@citationColor}{\@bib@oldcite{#1}}}}}\strut\relax\global\advance\@bib@numcites by 1\relax}%
 %% same as cite
-\gdef\citep#1{\textsuperscript{\textnormal{\scalebox{0.75}{\color{\@citationColor}{\@bib@oldcitep{#1}}}}}\global\advance\@bib@numcites by 1}%
+\gdef\citep#1{\textsuperscript{\textnormal{\scalebox{0.75}{\color{\@citationColor}{\@bib@oldcitep{#1}}}}}\strut\relax\global\advance\@bib@numcites by 1\relax}%
 %% cite a reference by number, but pre-pend non-breakable space, e.g., ~[1]
-\gdef\scitep#1{\textsuperscript{\textnormal{\scalebox{0.75}{~\color{\@citationColor}{\@bib@oldcitep{#1}}}}}\global\advance\@bib@numcites by 1}%
+\gdef\scitep#1{\textsuperscript{\textnormal{\scalebox{0.75}{~\color{\@citationColor}{\@bib@oldcitep{#1}}}}}\strut\relax\global\advance\@bib@numcites by 1\relax}%
 %% cite a reference by author/number, e.g., von Weise~[1]
 \gdef\citet#1{\citeauthor{#1}~\citep{#1}\global\advance\@bib@numcites by 1}%
 %% cite a reference by author/number, but capitalize first letter, e.g., Von Weise~[1]
