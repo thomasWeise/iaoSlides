@@ -53,7 +53,20 @@ Sometimes we want to locate stuff at specific positions on a slide. For this pur
 7. `\xcodeil{text}` is a shorthand for `\codeil[language=XML]{text}`
 9. `\bcodeil{text}` is a shorthand for `\codeil[language=bash]{text}`
 
-### 2.4. Citations
+### 2.4. Algorithms
+
+You can also include algorithm listings in the slides. Algorithms are more formal and abstract than source listings.
+
+1. `\putAlgorithm{return value}{algorithm name and parameters}{variable declarations}{algorithm code}`
+2. `\putZoomedAlgorithm{zoom factor}{return value}{algorithm name and parameters}{variable declarations}{algorithm code}`
+3. `\aBegin{block of multiple lines}`
+4. `\aLine{a line of the algorithm}`
+5. `\aAssign{variable}{new value}`
+6. `\aWhile{condition}{body}`
+7. `\aForEach{condition}{body}`
+8. ...
+
+### 2.5. Citations
 
 1. `\citep{ref}` cite reference `ref` by number
 2. `\scitep{ref}` cite reference `ref` by number, pre-pend non-breakable space. For use in text, like `bla bla blablabla\scitep{ref}`
@@ -62,11 +75,11 @@ Sometimes we want to locate stuff at specific positions on a slide. For this pur
 5. `\citete{authorRef}{refs}` cite references `refs` by number, but pre-pend the author names of reference `authorRef`. This is useful if a group of authors has produced several works, but the author order changes in these works.
 6. `\Citete{authorRef}{refs}` like `\citete{authorRef}{refs}`, but capitalize first character.
 
-### 2.5. Chinese
+### 2.6. Chinese
 
 Include Chinese text with the command `\zh{chinese text}`. You then need to use the XeLaTeX script for compiling. `\zhb{chinese text}` puts the text into an `\mbox{...}`, which prevents line breaks. This makes sense when using Chinese words like university names or other things that should not be broken across lines in an otherwise English text, for instance.
 
-### 2.6. Putting QR Codes
+### 2.7. Putting QR Codes
 QR codes make it easy from your audience to reach your website or slide set.
 You can put up to two QR Codes to be displayed at the title slide, ideally the first one should encode the URL of your website and the second one the URL of the slide set (or, if you want, your WeChat account...).
 Therefore, you need to point the commands `\qrCodeXXXImage` to the graphic file and `\qrCodeXXXTitle` to the title, where `XXX` must be replaced with either `One` or `Two`. You can define the commands to `\relax` to not display the QR code. As a consequence, the commands are currently defined as

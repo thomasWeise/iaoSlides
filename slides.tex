@@ -185,6 +185,8 @@ Commands for references to literature (stored as Bib\TeX\ records in the file \t
 \end{block}%
 \end{frame}%
 %
+\section{Including Source Code Listings}%
+%
 \begin{frame}[containsverbatim]%
 \frametitle{Coding}%
 \begin{itemize}%
@@ -253,6 +255,49 @@ a = b + c //(*@\xtextacute@*)a \longleftarrow b+c(*@\xtextacute@*)
 \item<5-> You can put \codeBox{\texttt{lstinputlisting}}s into \codeBox{\texttt{parboxes}} which you can resize via \codeBox{\texttt{scaledBox}} or \codeBox{\texttt{resizebox}}%
 \item<6-> Plain listings \codeBox{\texttt{lstlisting}} must go into \codeBox{\texttt{minipage}}s to be resized via \codeBox{\texttt{scaledBox}}% 
 \end{itemize}%
+\end{frame}%
+%
+\section{Including Algorithms}%
+%
+\begin{frame}%
+\frametitle{An Algorithm}%
+%
+\putAlgorithm{x}{\textit{exhaustiveEnumeration}(f,\underline{f})}%
+{%
+\aIn{f}{the objective/fitness function}%
+\aIn{\underline{f}}{the lowest possible objective value, $-\infty$ if unknown}%
+\aVar{x}{the current candidate solution}%
+\aOut{\xi}{the search result}%
+}%
+{%
+\aAssign{\xi}{\textnormal{first element in search space}}%
+\aAssign{t}{1}%
+\aWhile{ \textnormal{not all solutions checked} \land \left(f(\xi)>\underline{f}\right) }{%
+\aAssign{x}{\textnormal{next element in search space}}%
+\alIf{f(x)>f(\xi)}{\aAssign{\xi}{x}}%
+}%
+\aRet{\xi}%%
+}%
+\end{frame}%
+\begin{frame}%
+\frametitle{A Zoomed Algorithm}%
+%
+\putZoomedAlgorithm{0.6}{x}{\textit{exhaustiveEnumeration}(f,\underline{f})}%
+{%
+\aIn{f}{the objective/fitness function}%
+\aIn{\underline{f}}{the lowest possible objective value, $-\infty$ if unknown}%
+\aVar{x}{the current candidate solution}%
+\aOut{\xi}{the search result}%
+}%
+{%
+\aAssign{\xi}{\textnormal{first element in search space}}%
+\aAssign{t}{1}%
+\aWhile{ \textnormal{not all solutions checked} \land \left(f(\xi)>\underline{f}\right) }{%
+\aAssign{x}{\textnormal{next element in search space}}%
+\alIf{f(x)>f(\xi)}{\aAssign{\xi}{x}}%
+}%
+\aRet{\xi}%%
+}%
 \end{frame}%
 %
 \endPresentation%

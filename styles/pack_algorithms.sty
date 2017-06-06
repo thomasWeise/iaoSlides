@@ -1,0 +1,216 @@
+%%
+%% In this package, we define commands for including algorithms.
+%%
+%
+%
+\RequirePackage[vlined,algoruled]{algorithm2e}%
+%
+%
+%
+\DontPrintSemicolon%
+\LinesNotNumbered%
+\NoCaptionOfAlgo%
+\RestyleAlgo{plain}%
+\SetAlgoVlined%
+\SetAlgoNoEnd%
+%
+%
+\xdef\@dsalgo@beamer@scaleboxfactor{1}%
+%
+% the algorithm command
+% #1 the result variable (or empty)
+% #2 the algorithm name (including parameters)
+% #3 the parameter and variable declarations
+% #4 the code
+\gdef\putAlgorithm#1#2#3#4{%
+%
+\if\relax\detokenize{#1}\relax%
+\expandafter\@firstoftwo%
+\else%
+\expandafter\@secondoftwo%
+\fi%
+{\gdef\@myAlgoHeadline{\ensuremath{\displaystyle{#2}}}}%
+{\gdef\@myAlgoHeadline{\plainAssign{#1}{#2}}}%
+%
+\expandafter\begin\expandafter{exampleblock}{\@myAlgoHeadline}%
+\expandafter\scalebox{\@dsalgo@beamer@scaleboxfactor}{%
+\begin{algorithm}[H]%
+\if\relax\detokenize{#3}\relax%
+\expandafter\@firstoftwo%
+\else%
+\expandafter\@secondoftwo%
+\fi%
+{}{#3\aBlankLine}%
+\aBegin{#4}%
+\end{algorithm}%
+}%
+\end{exampleblock}%
+%
+\xdef\@dsalgo@beamer@scaleboxfactor{1}%
+}%
+%
+% the zoomed algorithm command
+% #1 the zoom factor
+% #2 the result variable (or empty)
+% #3 the algorithm name (including parameters)
+% #4 the parameter and variable declarations
+% #5 the code
+\gdef\putZoomedAlgorithm#1#2#3#4#5{%
+\xdef\@dsalgo@beamer@scaleboxfactor{#1}%
+\putAlgorithm{#2}{#3}{#4}{#5}%
+}%
+%
+%
+%
+% wrap the parameter into a begin
+% #1 the parameter to wrap
+\newcommand{\aBegin}[1]{\Begin{#1}}%
+%
+% print a blank line
+\newcommand{\aBlankLine}[0]{\BlankLine}%
+%
+% assign #2 to #1 without any line breaks
+% #1 the variable
+% #2 the value to assing
+\newcommand{\plainAssign}[2]{\ensuremath{{#1}\longleftarrow{#2}}}%
+\xdef\@myAlgoHeadline{}%
+%%
+% print a line inside an algorithm
+% #1 the line
+\newcommand{\aLine}[1]{\ensuremath{#1}\;}%%
+%
+% declare an input variable
+% #1 the variable
+% #2 the text
+\newcommand{\aIn}[2]{\KwIn{\ensuremath{#1}: \textnormal{#2}}}%
+\newcommand{\aInOut}[2]{\KwSty{InOut}\textnormal{~}{\ensuremath{#1}: \textnormal{#2}}\;}%
+%
+% declare an implicit input variable
+% #1 the variable
+% #2 the text
+\newcommand{\aInI}[2]{\KwIn{\enforceSmall{[implicit]}{0.65} \ensuremath{#1}: \textnormal{#2}}}%
+%
+% declare a local variable
+% #1 the variable
+% #2 the text
+\newcommand{\aVar}[2]{\KwData{\ensuremath{#1}: \textnormal{#2}}}%
+%
+% declare an output variable
+% #1 the variable
+% #2 the text
+\newcommand{\aOut}[2]{\KwOut{\ensuremath{#1}: \textnormal{#2}}}%
+%
+% return a value
+% #1 the value
+\newcommand{\aRet}[1]{\aLine{\KwRet{\ensuremath{\;#1}}}}%
+%
+% perform a variable assignment
+% #1 the variable
+% #2 the new value
+\newcommand{\aAssign}[2]{\aLine{\plainAssign{#1}{#2}}}%
+\newcommand{\aAssignC}[3]{\ensuremath{\plainAssign{#1}{#2}}\tcp*{#3}}%xxx
+%
+% put a line label
+% #1 the label name (algoline: will be prepented)
+\newcommand{\aLabel}[1]{\nllabel{algoline:#1}}%
+%
+% declare a while loop
+% #1 the condition
+% #2 the body
+\newcommand{\aWhile}[2]{\While{\ensuremath{#1}}{#2}}%
+%
+% declare an inline while loop
+% #1 the condition
+% #2 the body
+\newcommand{\alWhile}[2]{\lWhile{\ensuremath{#1}}{#2}}%
+%
+% declare a repeat loop
+% #1 the condition
+% #2 the body
+\newcommand{\aRepeat}[2]{\Repeat{\ensuremath{#1}}{#2}}%
+%
+% declare a for each loop
+% #1 the condition
+% #2 the body
+\newcommand{\aForEach}[2]{\ForEach{\ensuremath{#1}}{#2}}%
+\newcommand{\aForEachC}[3]{\ForEach(\tcp*{#3}\vspace{-1em}){\ensuremath{#1}}{#2}}%
+%
+% declare an inline for each loop
+% #1 the condition
+% #2 the body
+\newcommand{\alForEach}[2]{\lForEach{\ensuremath{#1}}{#2}}%
+%
+%
+% declare a conditional statement
+% #1 empty for normal if, non-empty for if without end
+% #2 the condition
+% #3 the body
+\newcommand{\aIf}[3][]{\checkEmpty{#1}{\If{\ensuremath{#2}}{#3}}{\uIf{\ensuremath{#2}}{#3}}}%
+\newcommand{\aIfC}[3]{\If(\tcp*{#3}\vspace{-1em}){\ensuremath{#1}}{#2}}%
+%
+% declare an else-if statement
+% #1 empty for normal if, non-empty for if without end
+% #2 the condition
+% #3 the body
+\newcommand{\aElseIf}[3][]{\checkEmpty{#1}{\ElseIf{\ensuremath{#2}}{#3}}{\uElseIf{\ensuremath{#2}}{#3}}}%
+%
+% declare an else
+% #1 the else body
+\newcommand{\aElse}[1]{\Else{#1}}%
+%
+% declare an inline else
+% #1 the else body
+\newcommand{\alElse}[1]{\lElse{#1}}%
+%
+% declare an inline if
+% #1 the body
+\newcommand{\alIf}[2]{\lIf{\ensuremath{#1}}{#2}}%
+%
+% declare an if-then-else
+% #1 the condition
+% #2 the body
+% #3 the else body
+\newcommand{\aeIf}[3]{\eIf{\ensuremath{#1}}{#2}{#3}}%
+%
+% declare an inline if-then-else
+% #1 the condition
+% #2 the body
+% #3 the else body
+\newcommand{\aelIf}[3]{\lIf{\ensuremath{#1}}{#2}\lElse{#3}}%
+%
+%
+% make a short comment
+% #1 the comment
+\newcommand{\asCmt}[1]{\tcp{#1}}%
+%
+% make a long comment
+% #1 the comment
+\newcommand{\alCmt}[1]{\tcc{#1}}%
+%
+% declare a for which counts down until equal:
+% #1 the variable
+% #2 the start value
+% #3 the down-to-value
+% #4 the body
+\newcommand{\aForDE}[4]{\For{\ensuremath{\plainAssign{#1}{#2}}~\KwSty{down~to}~\ensuremath{#3}}{#4}}%%
+\newcommand{\aForDEC}[5]{\For(\tcp*{#5}\vspace{-1em}){\ensuremath{\plainAssign{#1}{#2}}~\KwSty{down~to}~\ensuremath{#3}}{#4}}%%
+%
+% declare a for which counts up until equal:
+% #1 the variable
+% #2 the start value
+% #3 the up-to-value
+% #4 the body
+\newcommand{\aForUE}[4]{\For{\ensuremath{\plainAssign{#1}{#2}}~\KwSty{up~to}~\ensuremath{#3}}{#4}}%%
+\newcommand{\aForUEC}[5]{\For(\tcp*{#5}\vspace{-1em}){\ensuremath{\plainAssign{#1}{#2}}~\KwSty{up~to}~\ensuremath{#3}}{#4}}%%
+%
+% declare a sub algorithm
+% #1 the return value (or empty)
+% #2 the algorithm name (including parameters)
+% #3 the algorithm body
+\newcommand{\subAlgorithm}[3]{%
+\aBlankLine%
+\aLine{\textbf{\subalgorithmname~}\checkEmpty{#1}{#2}{\plainAssign{#1}{#2}}}%
+\aBegin{#3}%
+}%
+%
+%
