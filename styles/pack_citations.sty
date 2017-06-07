@@ -35,10 +35,10 @@
 %% cite a reference by number, but pre-pend non-breakable space, e.g., ~[1]
 \gdef\scitep#1{\textsuperscript{\textnormal{\scalebox{0.75}{~\color{\@citationColor}{\@bib@oldcitep{#1}}}}}\strut\relax\global\advance\@bib@numcites by 1\relax}%
 %% cite a reference by author/number, e.g., von Weise~[1]
-\gdef\citet#1{\citeauthor{#1}~\citep{#1}\global\advance\@bib@numcites by 1}%
+\gdef\citet#1{\citeauthor{#1}\scitep{#1}\global\advance\@bib@numcites by 1\relax}%
 %% cite a reference by author/number, but capitalize first letter, e.g., Von Weise~[1]
-\gdef\Citet#1{\Citeauthor{#1}~\citep{#1}\global\advance\@bib@numcites by 1}%
+\gdef\Citet#1{\Citeauthor{#1}\scitep{#1}\global\advance\@bib@numcites by 1\relax}%
 %% cite a couple of references by the first author followed by numbers, e.g., von Weise~[1,2,3]
-\gdef\citete#1#2{\citeauthor{#1}~\citep{#2}\global\advance\@bib@numcites by 1}%
+\gdef\citete#1#2{\citeauthor{#1}\scitep{#2}\global\advance\@bib@numcites by 1\relax}%
 %% cite a couple of references by the first author followed by numbers, but capitalize first letter,e.g., von Weise~[1,2,3]
-\gdef\Citete#1#2{\Citeauthor{#1}~\citep{#2}\global\advance\@bib@numcites by 1}%
+\gdef\Citete#1#2{\Citeauthor{#1}\scitep{#2}\global\advance\@bib@numcites by 1\relax}%
