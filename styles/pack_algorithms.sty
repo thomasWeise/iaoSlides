@@ -145,14 +145,31 @@
 % #1 empty for normal if, non-empty for if without end
 % #2 the condition
 % #3 the body
-\newcommand{\aIf}[3][]{\checkEmpty{#1}{\If{\ensuremath{#2}}{#3}}{\uIf{\ensuremath{#2}}{#3}}}%
+\newcommand{\aIf}[3][]{
+\if\relax\detokenize{#1}\relax%
+\expandafter\@firstoftwo%
+\else%
+\expandafter\@secondoftwo%
+\fi%
+{\If{\ensuremath{#2}}{#3}}%
+{\uIf{\ensuremath{#2}}{#3}}%
+}%
+%
 \newcommand{\aIfC}[3]{\If(\tcp*{#3}\vspace{-1em}){\ensuremath{#1}}{#2}}%
 %
 % declare an else-if statement
 % #1 empty for normal if, non-empty for if without end
 % #2 the condition
 % #3 the body
-\newcommand{\aElseIf}[3][]{\checkEmpty{#1}{\ElseIf{\ensuremath{#2}}{#3}}{\uElseIf{\ensuremath{#2}}{#3}}}%
+\newcommand{\aElseIf}[3][]{%
+\if\relax\detokenize{#1}\relax%
+\expandafter\@firstoftwo%
+\else%
+\expandafter\@secondoftwo%
+\fi%
+{\ElseIf{\ensuremath{#2}}{#3}}%
+{\uElseIf{\ensuremath{#2}}{#3}}%
+}%
 %
 % declare an else
 % #1 the else body
@@ -209,7 +226,14 @@
 % #3 the algorithm body
 \newcommand{\subAlgorithm}[3]{%
 \aBlankLine%
-\aLine{\textbf{\subalgorithmname~}\checkEmpty{#1}{#2}{\plainAssign{#1}{#2}}}%
+\aLine{\textbf{\subalgorithmname~}%
+\if\relax\detokenize{#1}\relax%
+\expandafter\@firstoftwo%
+\else%
+\expandafter\@secondoftwo%
+\fi%
+{#2}{\plainAssign{#1}{#2}}%
+}%
 \aBegin{#3}%
 }%
 %
